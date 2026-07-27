@@ -559,6 +559,17 @@
       line-height: 1.5;
     }
 
+    /* GHL embed container — constrains iframe width to match the rest of the form column */
+    .ghl-embed {
+      max-width: 460px;
+    }
+
+    .ghl-embed iframe {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
     /* =============================================
        FOOTER
        ============================================= */
@@ -958,28 +969,21 @@
       <h2 class="form-hl">You're one step away.</h2>
       <p class="form-sub">Fill in your info and we'll be in touch to confirm your spot and get you set up.</p>
 
-      <!--
-        TODO: Replace action="#" with the actual sign-up endpoint before launch.
-        Fields: name (required), email (required), phone (optional).
-      -->
-      <form class="form" action="#" method="POST" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text"  id="name"  name="name"  placeholder="Your full name"   required autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com"  required autocomplete="email">
-        </div>
-        <div class="field">
-          <label for="phone">Phone <span class="opt">(optional)</span></label>
-          <input type="tel"   id="phone" name="phone" placeholder="(419) 555-0100"   autocomplete="tel">
-        </div>
-        <div>
-          <button type="submit" class="btn btn-blue btn-full">Reserve My Spot</button>
-        </div>
-        <p class="form-note">10 spots only &nbsp;·&nbsp; Starts August 10 &nbsp;·&nbsp; $250 paid in full</p>
-      </form>
+      <!-- ================================================
+           TODO: Paste your Go High Level form embed code
+           below (iframe or script — either works).
+           Example iframe embed:
+             <iframe
+               src="https://api.leadconnectorhq.com/widget/form/YOUR_FORM_ID"
+               style="width:100%;border:none;overflow:hidden"
+               scrolling="no"
+               id="YOUR_FORM_ID">
+             </iframe>
+             <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+           ================================================ -->
+      <div class="ghl-embed">
+        <!-- PASTE GHL FORM EMBED HERE -->
+      </div>
     </div>
   </section>
 
