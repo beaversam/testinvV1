@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    /* =============================================
-       DESIGN TOKENS
-       ============================================= */
     :root {
       --blue:     #2596be;
       --blue-dim: #1e7fa5;
@@ -22,8 +19,6 @@
       --coral-dk: #d04733;
       --green:    #3fa66b;
       --white:    #ffffff;
-
-      /* Light-theme semantic tokens */
       --bg-page:     #ffffff;
       --bg-alt:      #eaf6fb;
       --bg-dark:     #10283a;
@@ -32,11 +27,9 @@
       --text-on-dk:  #ffffff;
       --border:      rgba(16, 40, 58, 0.12);
       --border-blue: rgba(37, 150, 190, 0.22);
-
       --font: 'Montserrat', system-ui, -apple-system, sans-serif;
       --radius: 3px;
     }
-
     @media (prefers-color-scheme: dark) {
       :root {
         --bg-page:    #0c1e2c;
@@ -46,7 +39,6 @@
         --border:     rgba(37, 150, 190, 0.18);
       }
     }
-
     :root[data-theme="light"] {
       --bg-page:    #ffffff;
       --bg-alt:     #eaf6fb;
@@ -54,7 +46,6 @@
       --text-muted: #3d5c72;
       --border:     rgba(16, 40, 58, 0.12);
     }
-
     :root[data-theme="dark"] {
       --bg-page:    #0c1e2c;
       --bg-alt:     #122030;
@@ -62,662 +53,116 @@
       --text-muted: #7baccb;
       --border:     rgba(37, 150, 190, 0.18);
     }
-
-    /* =============================================
-       RESET & BASE
-       ============================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-body);
-      background: var(--bg-page);
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { font-family: var(--font); font-size: 16px; line-height: 1.65; color: var(--text-body); background: var(--bg-page); -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
     a { color: inherit; }
-
-    /* =============================================
-       LAYOUT SHELL
-       ============================================= */
-    .wrap {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .wrap { width: 100%; max-width: 700px; margin: 0 auto; padding: 0 24px; }
     section { padding: 80px 0; }
-
     .sec-dark  { background: var(--bg-dark); color: var(--text-on-dk); }
     .sec-light { background: var(--bg-page); }
     .sec-sky   { background: var(--bg-alt); }
-
-    @media (max-width: 600px) {
-      section { padding: 60px 0; }
-    }
-
-    /* =============================================
-       EYEBROW LABELS
-       ============================================= */
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 22px;
-    }
-
+    @media (max-width: 600px) { section { padding: 60px 0; } }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--blue); margin-bottom: 22px; }
     .eyebrow--dk { color: rgba(37, 150, 190, 0.85); }
-
-    /* Weight-plate SVG mark used as eyebrow icon */
-    .plate {
-      display: inline-block;
-      flex-shrink: 0;
-      vertical-align: middle;
-    }
-
-    /* =============================================
-       SECTION HEADLINES
-       ============================================= */
-    .sh {
-      font-weight: 800;
-      font-size: clamp(26px, 5vw, 40px);
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-      text-wrap: balance;
-    }
-
-    .sh--dk  { color: var(--text-on-dk); }
-    .sh--lt  { color: var(--text-body); }
-
-    /* =============================================
-       HERO
-       ============================================= */
-    .hero {
-      background: var(--navy);
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 72px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Two concentric ring rings — brand weight-plate motif, background only */
-    .hero-rings {
-      position: absolute;
-      right: -160px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 520px;
-      height: 520px;
-      pointer-events: none;
-      opacity: 0.06;
-    }
-
-    .hero-rings circle {
-      fill: none;
-      stroke: var(--blue);
-    }
-
+    .plate { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+    .sh { font-weight: 800; font-size: clamp(26px, 5vw, 40px); line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+    .sh--dk { color: var(--text-on-dk); }
+    .sh--lt { color: var(--text-body); }
+    .hero { background: var(--navy); min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 72px 0 80px; position: relative; overflow: hidden; }
+    .hero-rings { position: absolute; right: -160px; top: 50%; transform: translateY(-50%); width: 520px; height: 520px; pointer-events: none; opacity: 0.06; }
+    .hero-rings circle { fill: none; stroke: var(--blue); }
     .hero .wrap { position: relative; z-index: 1; }
-
-    .hero-headline {
-      font-size: clamp(46px, 10.5vw, 96px);
-      font-weight: 900;
-      line-height: 0.97;
-      letter-spacing: -0.03em;
-      color: var(--white);
-      margin-bottom: 32px;
-      text-wrap: balance;
-    }
-
+    .hero-headline { font-size: clamp(46px, 10.5vw, 96px); font-weight: 900; line-height: 0.97; letter-spacing: -0.03em; color: var(--white); margin-bottom: 32px; text-wrap: balance; }
     .hero-headline .accent { color: var(--blue); }
-
-    .hero-sub {
-      font-size: clamp(16px, 2.6vw, 19px);
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.68);
-      max-width: 500px;
-      line-height: 1.65;
-      margin-bottom: 48px;
-    }
-
-    .hero-meta {
-      margin-top: 18px;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.38);
-    }
-
-    /* =============================================
-       BUTTONS
-       ============================================= */
-    .btn {
-      display: inline-block;
-      font-family: var(--font);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      border-radius: var(--radius);
-      padding: 17px 36px;
-      transition: background 0.18s, transform 0.15s;
-      line-height: 1;
-    }
-
-    .btn:focus-visible {
-      outline: 3px solid var(--blue);
-      outline-offset: 3px;
-    }
-
-    .btn-blue {
-      background: var(--blue);
-      color: var(--white);
-    }
+    .hero-sub { font-size: clamp(16px, 2.6vw, 19px); font-weight: 400; color: rgba(255,255,255,0.68); max-width: 500px; line-height: 1.65; margin-bottom: 48px; }
+    .hero-meta { margin-top: 18px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; color: rgba(255,255,255,0.38); }
+    .btn { display: inline-block; font-family: var(--font); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: var(--radius); padding: 17px 36px; transition: background 0.18s, transform 0.15s; line-height: 1; }
+    .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .btn-blue { background: var(--blue); color: var(--white); }
     .btn-blue:hover { background: var(--blue-dim); transform: translateY(-1px); }
-
-    .btn-coral {
-      background: var(--coral);
-      color: var(--white);
-    }
+    .btn-coral { background: var(--coral); color: var(--white); }
     .btn-coral:hover { background: var(--coral-dk); transform: translateY(-1px); }
-
     .btn-full { width: 100%; text-align: center; display: block; }
-
-    /* =============================================
-       PROBLEM SECTION
-       ============================================= */
-    .problem-hl {
-      font-size: clamp(22px, 4vw, 34px);
-      font-weight: 800;
-      color: var(--text-body);
-      line-height: 1.2;
-      text-wrap: balance;
-      margin-bottom: 24px;
-    }
-
-    .problem-body {
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 600px;
-    }
-
+    .problem-hl { font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: var(--text-body); line-height: 1.2; text-wrap: balance; margin-bottom: 24px; }
+    .problem-body { font-size: 17px; color: var(--text-muted); line-height: 1.7; max-width: 600px; }
     .problem-body p + p { margin-top: 14px; }
-
-    /* =============================================
-       BENEFITS SECTION
-       ============================================= */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-top: 48px;
-      background: rgba(37, 150, 190, 0.12);
-    }
-
-    @media (max-width: 500px) {
-      .benefits-grid { grid-template-columns: 1fr; }
-    }
-
-    .benefit-card {
-      background: var(--navy-mid);
-      padding: 36px 30px;
-      border-top: 3px solid var(--blue);
-      transition: background 0.2s;
-    }
-
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; background: rgba(37,150,190,0.12); }
+    @media (max-width: 500px) { .benefits-grid { grid-template-columns: 1fr; } }
+    .benefit-card { background: var(--navy-mid); padding: 36px 30px; border-top: 3px solid var(--blue); transition: background 0.2s; }
     .benefit-card:hover { background: #1c3a52; }
-
-    .benefit-statement {
-      font-size: clamp(16px, 2.4vw, 19px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.4;
-      text-wrap: balance;
-    }
-
-    .benefit-statement em {
-      font-style: normal;
-      color: rgba(255, 255, 255, 0.48);
-      font-weight: 400;
-    }
-
-    /* =============================================
-       6 WEEKS TIMELINE
-       ============================================= */
-    .weeks {
-      list-style: none;
-      margin-top: 48px;
-    }
-
-    .week {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 0 20px;
-      align-items: baseline;
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-    }
-
+    .benefit-statement { font-size: clamp(16px, 2.4vw, 19px); font-weight: 700; color: var(--white); line-height: 1.4; text-wrap: balance; }
+    .benefit-statement em { font-style: normal; color: rgba(255,255,255,0.48); font-weight: 400; }
+    .weeks { list-style: none; margin-top: 48px; }
+    .week { display: grid; grid-template-columns: 64px 1fr; gap: 0 20px; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--border); }
     .weeks li:last-child { border-bottom: 1px solid var(--border); }
-
-    .wk-label {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--blue);
-      padding-top: 2px;
-    }
-
-    .wk-text {
-      font-size: clamp(15px, 2vw, 17px);
-      font-weight: 600;
-      color: var(--text-body);
-      line-height: 1.45;
-    }
-
-    /* =============================================
-       WHAT'S INCLUDED
-       ============================================= */
-    .included-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 32px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 480px) {
-      .included-list { grid-template-columns: 1fr; }
-    }
-
-    .included-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-body);
-      line-height: 1.4;
-    }
-
-    .check-icon {
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .price-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 40px;
-      padding: 12px 22px;
-      border: 1.5px solid var(--border-blue);
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 0.04em;
-    }
-
-    .price-tag strong {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--text-body);
-      letter-spacing: -0.02em;
-    }
-
-    /* =============================================
-       FAQ / OBJECTIONS ACCORDION
-       ============================================= */
+    .wk-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 2px; }
+    .wk-text { font-size: clamp(15px, 2vw, 17px); font-weight: 600; color: var(--text-body); line-height: 1.45; }
+    .included-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; margin-top: 40px; }
+    @media (max-width: 480px) { .included-list { grid-template-columns: 1fr; } }
+    .included-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; font-weight: 600; color: var(--text-body); line-height: 1.4; }
+    .check-icon { flex-shrink: 0; margin-top: 1px; }
+    .price-tag { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; padding: 12px 22px; border: 1.5px solid var(--border-blue); border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.04em; }
+    .price-tag strong { font-size: 20px; font-weight: 900; color: var(--text-body); letter-spacing: -0.02em; }
     .faq { margin-top: 48px; }
-
     .faq-item { border-top: 1px solid var(--border); }
     .faq-item:last-child { border-bottom: 1px solid var(--border); }
-
-    .faq-btn {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 22px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-family: var(--font);
-      font-size: 15px;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--text-body);
-      text-align: left;
-      line-height: 1.4;
-    }
-
-    .faq-btn:focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: 2px;
-    }
-
-    .faq-toggle {
-      flex-shrink: 0;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
+    .faq-btn { width: 100%; background: none; border: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--font); font-size: 15px; font-weight: 700; font-style: italic; color: var(--text-body); text-align: left; line-height: 1.4; }
+    .faq-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .faq-toggle { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
     .faq-toggle svg { transition: transform 0.25s ease; }
-
     .faq-item.open .faq-toggle { background: var(--blue-dim); }
     .faq-item.open .faq-toggle svg { transform: rotate(45deg); }
-
-    .faq-body {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-    }
-
+    .faq-body { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
     .faq-item.open .faq-body { max-height: 180px; }
-
-    .faq-ans {
-      padding-bottom: 24px;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    /* =============================================
-       OFFER / URGENCY SECTION
-       ============================================= */
-    .offer-hl {
-      font-size: clamp(44px, 10vw, 88px);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
-    }
-
+    .faq-ans { padding-bottom: 24px; font-size: 16px; font-weight: 400; color: var(--text-muted); line-height: 1.65; }
+    .offer-hl { font-size: clamp(44px, 10vw, 88px); font-weight: 900; color: var(--white); line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 28px; }
     .offer-hl .coral-word { color: var(--coral); }
-
-    .offer-body {
-      font-size: 17px;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.65;
-      max-width: 460px;
-      margin-bottom: 44px;
-    }
-
-    .offer-meta {
-      margin-top: 18px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    /* =============================================
-       SIGNUP FORM
-       ============================================= */
-    .form-hl {
-      font-size: clamp(24px, 4.5vw, 36px);
-      font-weight: 800;
-      color: var(--text-body);
-      line-height: 1.15;
-      text-wrap: balance;
-      margin-bottom: 8px;
-    }
-
-    .form-sub {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-    }
-
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      max-width: 460px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .field label {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-body);
-    }
-
-    .field label .opt {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--text-muted);
-      margin-left: 4px;
-    }
-
-    .field input {
-      font-family: var(--font);
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-body);
-      background: var(--bg-alt);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      width: 100%;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .field input:focus {
-      outline: none;
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(37, 150, 190, 0.15);
-    }
-
-    .field input::placeholder { color: var(--text-muted); opacity: 0.55; }
-
-    .form-note {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* GHL embed container — constrains iframe width to match the rest of the form column */
-    .ghl-embed {
-      max-width: 460px;
-    }
-
-    .ghl-embed iframe {
-      width: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* =============================================
-       FOOTER
-       ============================================= */
-    .footer {
-      background: var(--bg-dark);
-      padding: 40px 0;
-      border-top: 1px solid rgba(37, 150, 190, 0.12);
-    }
-
-    .footer-brand {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 8px;
-    }
-
-    .footer-info {
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.38);
-      line-height: 1.7;
-    }
-
-    .footer-info a {
-      color: rgba(255, 255, 255, 0.48);
-      text-decoration: none;
-      transition: color 0.18s;
-    }
-
+    .offer-body { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 460px; margin-bottom: 44px; }
+    .offer-meta { margin-top: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); }
+    .form-hl { font-size: clamp(24px, 4.5vw, 36px); font-weight: 800; color: var(--text-body); line-height: 1.15; text-wrap: balance; margin-bottom: 8px; }
+    .form-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 36px; }
+    .ghl-embed { max-width: 460px; }
+    .ghl-embed iframe { width: 100%; border: none; display: block; }
+    .footer { background: var(--bg-dark); padding: 40px 0; border-top: 1px solid rgba(37,150,190,0.12); }
+    .footer-brand { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .footer-info { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.38); line-height: 1.7; }
+    .footer-info a { color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.18s; }
     .footer-info a:hover { color: var(--blue); }
-
-    /* =============================================
-       STICKY MOBILE CTA BAR
-       ============================================= */
-    .sticky {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--navy);
-      border-top: 1px solid rgba(37, 150, 190, 0.2);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      z-index: 200;
-      transform: translateY(102%);
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .sticky.show {
-      transform: translateY(0);
-    }
-
-    .sticky-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.55);
-      line-height: 1.4;
-    }
-
-    .sticky-label strong {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .sticky .btn {
-      padding: 12px 22px;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-
-    /* Hide on desktop */
-    @media (min-width: 760px) {
-      .sticky { display: none; }
-    }
-
-    /* =============================================
-       MOTION & ACCESSIBILITY
-       ============================================= */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-      }
-      html { scroll-behavior: auto; }
-    }
+    .sticky { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(37,150,190,0.2); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 200; transform: translateY(102%); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 -8px 24px rgba(0,0,0,0.35); }
+    .sticky.show { transform: translateY(0); }
+    .sticky-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); line-height: 1.4; }
+    .sticky-label strong { display: block; font-size: 13.5px; font-weight: 700; color: var(--white); }
+    .sticky .btn { padding: 12px 22px; font-size: 12px; flex-shrink: 0; }
+    @media (min-width: 760px) { .sticky { display: none; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
 
-  <!-- HERO ================================================ -->
   <section class="hero sec-dark" id="top">
-
-    <!-- Background weight-plate ring texture -->
     <svg class="hero-rings" viewBox="0 0 520 520" aria-hidden="true">
       <circle cx="260" cy="260" r="245" stroke-width="48"/>
       <circle cx="260" cy="260" r="140" stroke-width="32"/>
-      <circle cx="260" cy="260" r="58"  stroke-width="18"/>
+      <circle cx="260" cy="260" r="58" stroke-width="18"/>
     </svg>
-
     <div class="wrap">
       <p class="eyebrow eyebrow--dk">
-        <svg class="plate" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        The Well &nbsp;·&nbsp; New Program
+        <svg class="plate" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>
+        The Well &nbsp;&middot;&nbsp; New Program
       </p>
-
-      <h1 class="hero-headline">
-        Feel In Control<br>
-        <span class="accent">Of Food Again.</span>
-      </h1>
-
-      <p class="hero-sub">
-        A 6-week program built to give you real confidence in the kitchen, support the training you're already doing, and habits you can actually keep after week six.
-      </p>
-
+      <h1 class="hero-headline">Feel In Control<br><span class="accent">Of Food Again.</span></h1>
+      <p class="hero-sub">A 6-week program built to give you real confidence in the kitchen, support the training you're already doing, and habits you can actually keep after week six.</p>
       <a href="#signup" class="btn btn-blue">Grab One of 10 Spots</a>
-
-      <p class="hero-meta">Starts August 10 &nbsp;·&nbsp; The Well, Bowling Green OH &nbsp;·&nbsp; 10 spots only</p>
+      <p class="hero-meta">Starts August 10 &nbsp;&middot;&nbsp; The Well, Bowling Green OH &nbsp;&middot;&nbsp; 10 spots only</p>
     </div>
   </section>
 
-
-  <!-- PROBLEM ============================================= -->
   <section class="sec-light" id="problem">
     <div class="wrap">
-      <p class="eyebrow">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        Who This Is For
-      </p>
-
-      <h2 class="problem-hl">
-        You know what to eat.<br>
-        Staying consistent is the hard part.
-      </h2>
-
+      <p class="eyebrow"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>Who This Is For</p>
+      <h2 class="problem-hl">You know what to eat.<br>Staying consistent is the hard part.</h2>
       <div class="problem-body">
         <p>You've read the articles. You've tried the apps. But at 5pm, exhausted, with people who need dinner and a day that didn't go as planned, none of that matters.</p>
         <p>That's not a willpower problem. Most nutrition plans fail because they ask for perfection on day one. One missed meal turns into a missed day, and a missed day turns into "I'll just start Monday."</p>
@@ -725,300 +170,114 @@
     </div>
   </section>
 
-
-  <!-- BENEFITS ============================================ -->
   <section class="sec-dark" id="benefits">
     <div class="wrap">
-      <p class="eyebrow eyebrow--dk">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        What Changes
-      </p>
-
+      <p class="eyebrow eyebrow--dk"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>What Changes</p>
       <h2 class="sh sh--dk">Built for real life.<br>Not perfect conditions.</h2>
-
       <div class="benefits-grid">
-        <div class="benefit-card">
-          <p class="benefit-statement">Feel in control around food <em>— instead of food controlling you.</em></p>
-        </div>
-        <div class="benefit-card">
-          <p class="benefit-statement">Support the training you're already doing <em>— nutrition that backs up your effort in the gym.</em></p>
-        </div>
-        <div class="benefit-card">
-          <p class="benefit-statement">One habit at a time <em>— not a total overhaul you can't sustain.</em></p>
-        </div>
-        <div class="benefit-card">
-          <p class="benefit-statement">A foundation that lasts <em>— not a plan you abandon the week the program ends.</em></p>
-        </div>
+        <div class="benefit-card"><p class="benefit-statement">Feel in control around food <em>— instead of food controlling you.</em></p></div>
+        <div class="benefit-card"><p class="benefit-statement">Support the training you're already doing <em>— nutrition that backs up your effort in the gym.</em></p></div>
+        <div class="benefit-card"><p class="benefit-statement">One habit at a time <em>— not a total overhaul you can't sustain.</em></p></div>
+        <div class="benefit-card"><p class="benefit-statement">A foundation that lasts <em>— not a plan you abandon the week the program ends.</em></p></div>
       </div>
     </div>
   </section>
 
-
-  <!-- 6 WEEKS ============================================= -->
   <section class="sec-sky" id="program">
     <div class="wrap">
-      <p class="eyebrow">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        The 6 Weeks
-      </p>
-
+      <p class="eyebrow"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>The 6 Weeks</p>
       <h2 class="sh sh--lt">One habit at a time.<br>Six weeks of real progress.</h2>
-
-      <ul class="weeks" aria-label="Program week by week">
-        <li class="week">
-          <span class="wk-label">Week 1</span>
-          <span class="wk-text">Build a nutrition foundation you can actually stick to.</span>
-        </li>
-        <li class="week">
-          <span class="wk-label">Week 2</span>
-          <span class="wk-text">Learn to build a plate that fits your life, not a diet's rules.</span>
-        </li>
-        <li class="week">
-          <span class="wk-label">Week 3</span>
-          <span class="wk-text">Walk into any grocery store with a plan instead of guesswork.</span>
-        </li>
-        <li class="week">
-          <span class="wk-label">Week 4</span>
-          <span class="wk-text">Handle restaurants, family events, and busy weeks without falling off track.</span>
-        </li>
-        <li class="week">
-          <span class="wk-label">Week 5</span>
-          <span class="wk-text">Build habits strong enough to survive a bad day or a bad week.</span>
-        </li>
-        <li class="week">
-          <span class="wk-label">Week 6</span>
-          <span class="wk-text">See your progress with a final InBody scan and leave with a plan for life.</span>
-        </li>
+      <ul class="weeks">
+        <li class="week"><span class="wk-label">Week 1</span><span class="wk-text">Build a nutrition foundation you can actually stick to.</span></li>
+        <li class="week"><span class="wk-label">Week 2</span><span class="wk-text">Learn to build a plate that fits your life, not a diet's rules.</span></li>
+        <li class="week"><span class="wk-label">Week 3</span><span class="wk-text">Walk into any grocery store with a plan instead of guesswork.</span></li>
+        <li class="week"><span class="wk-label">Week 4</span><span class="wk-text">Handle restaurants, family events, and busy weeks without falling off track.</span></li>
+        <li class="week"><span class="wk-label">Week 5</span><span class="wk-text">Build habits strong enough to survive a bad day or a bad week.</span></li>
+        <li class="week"><span class="wk-label">Week 6</span><span class="wk-text">See your progress with a final InBody scan and leave with a plan for life.</span></li>
       </ul>
     </div>
   </section>
 
-
-  <!-- WHAT'S INCLUDED ===================================== -->
   <section class="sec-light" id="included">
     <div class="wrap">
-      <p class="eyebrow">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        What's Included
-      </p>
-
+      <p class="eyebrow"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>What's Included</p>
       <h2 class="sh sh--lt">Everything you need.<br>Nothing extra.</h2>
-
-      <ul class="included-list" aria-label="Program inclusions">
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          One simple habit to focus on each week
-        </li>
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Workbook activities and education
-        </li>
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Weekly goals and reflection
-        </li>
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Habit tracking
-        </li>
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Coach support and accountability every week
-        </li>
-        <li class="included-item">
-          <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="#3fa66b"/>
-            <path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Starting and final InBody scan
-        </li>
+      <ul class="included-list">
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>One simple habit to focus on each week</li>
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Workbook activities and education</li>
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Weekly goals and reflection</li>
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Habit tracking</li>
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Coach support and accountability every week</li>
+        <li class="included-item"><svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#3fa66b"/><path d="M5.5 10.5L8.5 13.5L14.5 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Starting and final InBody scan</li>
       </ul>
-
       <div class="price-tag">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        6 weeks &nbsp;·&nbsp; <strong>$250</strong> &nbsp;·&nbsp; paid in full
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>
+        6 weeks &nbsp;&middot;&nbsp; <strong>$250</strong> &nbsp;&middot;&nbsp; paid in full
       </div>
     </div>
   </section>
 
-
-  <!-- FAQ / OBJECTIONS ==================================== -->
   <section class="sec-sky" id="faq">
     <div class="wrap">
-      <p class="eyebrow">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        Common Questions
-      </p>
-
+      <p class="eyebrow"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>Common Questions</p>
       <h2 class="sh sh--lt">Still on the fence?</h2>
-
       <div class="faq">
-
         <div class="faq-item">
-          <button class="faq-btn" aria-expanded="false" aria-controls="ans1">
-            "I don't have time for another program."
-            <span class="faq-toggle" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-body" id="ans1" role="region">
-            <p class="faq-ans">This isn't a second job. It's one habit a week, built around the life you already have.</p>
-          </div>
+          <button class="faq-btn" aria-expanded="false" aria-controls="ans1">"I don't have time for another program."<span class="faq-toggle" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-body" id="ans1"><p class="faq-ans">This isn't a second job. It's one habit a week, built around the life you already have.</p></div>
         </div>
-
         <div class="faq-item">
-          <button class="faq-btn" aria-expanded="false" aria-controls="ans2">
-            "I've tried nutrition programs before and they didn't stick."
-            <span class="faq-toggle" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-body" id="ans2" role="region">
-            <p class="faq-ans">Most programs hand you a plan and disappear. This one has a coach checking in with you every single week.</p>
-          </div>
+          <button class="faq-btn" aria-expanded="false" aria-controls="ans2">"I've tried nutrition programs before and they didn't stick."<span class="faq-toggle" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-body" id="ans2"><p class="faq-ans">Most programs hand you a plan and disappear. This one has a coach checking in with you every single week.</p></div>
         </div>
-
         <div class="faq-item">
-          <button class="faq-btn" aria-expanded="false" aria-controls="ans3">
-            "I'm not sure I'm 'bad enough' to need this."
-            <span class="faq-toggle" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-body" id="ans3" role="region">
-            <p class="faq-ans">You don't have to be struggling to want more control. Most members just want food to stop feeling complicated.</p>
-          </div>
+          <button class="faq-btn" aria-expanded="false" aria-controls="ans3">"I'm not sure I'm 'bad enough' to need this."<span class="faq-toggle" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1.5V10.5M1.5 6H10.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-body" id="ans3"><p class="faq-ans">You don't have to be struggling to want more control. Most members just want food to stop feeling complicated.</p></div>
         </div>
-
       </div>
     </div>
   </section>
 
-
-  <!-- OFFER / FINAL URGENCY =============================== -->
   <section class="sec-dark" id="offer">
     <div class="wrap">
-      <p class="eyebrow eyebrow--dk">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        The Offer
-      </p>
-
+      <p class="eyebrow eyebrow--dk"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>The Offer</p>
       <h2 class="offer-hl">10 <span class="coral-word">Spots.</span><br>That's It.</h2>
-
-      <p class="offer-body">
-        The Healthy Habits Program starts August 10th and runs six weeks. $250, paid in full. Once 10 people sign up, this round is closed until the next one.
-      </p>
-
+      <p class="offer-body">The Healthy Habits Program starts August 10th and runs six weeks. $250, paid in full. Once 10 people sign up, this round is closed until the next one.</p>
       <a href="#signup" class="btn btn-coral">Grab Your Spot</a>
-
-      <p class="offer-meta">Starts Monday, August 10 &nbsp;·&nbsp; Ends September 20 &nbsp;·&nbsp; The Well, Bowling Green OH</p>
+      <p class="offer-meta">Starts Monday, August 10 &nbsp;&middot;&nbsp; Ends September 20 &nbsp;&middot;&nbsp; The Well, Bowling Green OH</p>
     </div>
   </section>
 
-
-  <!-- SIGNUP FORM ========================================= -->
   <section class="sec-light" id="signup">
     <div class="wrap">
-      <p class="eyebrow">
-        <svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7"   stroke="#2596be" stroke-width="1.5"/>
-          <circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/>
-        </svg>
-        Reserve Your Spot
-      </p>
-
+      <p class="eyebrow"><svg class="plate" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="#2596be" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" stroke="#2596be" stroke-width="1.5"/></svg>Reserve Your Spot</p>
       <h2 class="form-hl">You're one step away.</h2>
       <p class="form-sub">Fill in your info and we'll be in touch to confirm your spot and get you set up.</p>
-
-      <!-- ================================================
-           TODO: Paste your Go High Level form embed code
-           below (iframe or script — either works).
-           Example iframe embed:
-             <iframe
-               src="https://api.leadconnectorhq.com/widget/form/YOUR_FORM_ID"
-               style="width:100%;border:none;overflow:hidden"
-               scrolling="no"
-               id="YOUR_FORM_ID">
-             </iframe>
-             <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-           ================================================ -->
+      <!-- TODO: Paste your Go High Level form embed code below -->
       <div class="ghl-embed">
         <!-- PASTE GHL FORM EMBED HERE -->
       </div>
     </div>
   </section>
 
-
-  <!-- FOOTER ============================================== -->
   <footer class="footer">
     <div class="wrap">
       <p class="footer-brand">The Well Health &amp; Fitness</p>
-      <p class="footer-info">
-        1099 N. Main St., Bowling Green, OH
-        &nbsp;·&nbsp; <a href="tel:+14198273992">419-827-3992</a>
-        &nbsp;·&nbsp; <a href="https://thewellbg.com" target="_blank" rel="noopener noreferrer">thewellbg.com</a>
-      </p>
+      <p class="footer-info">1099 N. Main St., Bowling Green, OH &nbsp;&middot;&nbsp; <a href="tel:+14198273992">419-827-3992</a> &nbsp;&middot;&nbsp; <a href="https://thewellbg.com" target="_blank" rel="noopener noreferrer">thewellbg.com</a></p>
     </div>
   </footer>
 
-
-  <!-- STICKY MOBILE CTA =================================== -->
   <div class="sticky" id="stickyCta" aria-hidden="true">
-    <div class="sticky-label">
-      <strong>Healthy Habits Program</strong>
-      10 spots &nbsp;·&nbsp; Starts Aug 10
-    </div>
+    <div class="sticky-label"><strong>Healthy Habits Program</strong>10 spots &nbsp;&middot;&nbsp; Starts Aug 10</div>
     <a href="#signup" class="btn btn-blue" tabindex="-1" id="stickyLink">Grab a Spot</a>
   </div>
 
-
   <script>
-    // ---- Sticky CTA: show when hero CTA exits viewport ----
-    const heroCta   = document.querySelector('.hero .btn');
-    const stickyCta = document.getElementById('stickyCta');
-    const stickyLnk = document.getElementById('stickyLink');
-
+    var heroCta = document.querySelector('.hero .btn');
+    var stickyCta = document.getElementById('stickyCta');
+    var stickyLnk = document.getElementById('stickyLink');
     if (heroCta && stickyCta) {
-      const obs = new IntersectionObserver(function(entries) {
+      var obs = new IntersectionObserver(function(entries) {
         var vis = entries[0].isIntersecting;
         stickyCta.classList.toggle('show', !vis);
         stickyCta.setAttribute('aria-hidden', vis ? 'true' : 'false');
@@ -1026,24 +285,15 @@
       }, { threshold: 0 });
       obs.observe(heroCta);
     }
-
-    // ---- FAQ accordion ----
     document.querySelectorAll('.faq-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        var item   = btn.closest('.faq-item');
+        var item = btn.closest('.faq-item');
         var isOpen = item.classList.contains('open');
-
-        // close all
         document.querySelectorAll('.faq-item').forEach(function(el) {
           el.classList.remove('open');
           el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
         });
-
-        // open clicked if it was closed
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
   </script>
